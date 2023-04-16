@@ -1,0 +1,41 @@
+{
+  "name": "new-react",
+  "version": "1.0.0",
+  "description": "This is a learning app",
+ 
+  "scripts": {
+    "test": "jest",
+    "setup": "node --stack-size=20000 index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amandeepkaur1414/React.git"
+  },
+  "keywords": [
+    "React",
+    "Amandeep"
+  ],
+  "author": "Amandeep",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amandeepkaur1414/React/issues"
+  },
+  "homepage": "https://github.com/Amandeepkaur1414/React#readme",
+  "dependencies": {
+    "configure": "0.0.1",
+    "node-gyp": "^9.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rebuild": "^0.1.2",
+    "saas": "^1.0.0"
+  },
+  "devDependencies": {
+    "jetifier": "^2.0.0",
+    "node-sass": "^8.0.0",
+    "parcel": "^2.8.3",
+    "process": "^0.11.10"
+  },
+  "browserslist":[
+    "last 10 versions"
+]
+}
