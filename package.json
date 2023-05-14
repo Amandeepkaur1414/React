@@ -5,7 +5,9 @@
  
   "scripts": {
     "test": "jest",
-    "setup": "node --stack-size=20000 index.js"
+    "setup": "node --stack-size=20000 index.js",
+    "start": "parcel index.html",
+    "build":"parcel build index.html"
   },
   "repository": {
     "type": "git",
