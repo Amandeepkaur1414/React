@@ -17,6 +17,7 @@
 .nav-conatiner >ul >li{
     padding: 10px;
     margin: 10px;
+    color: #2F4F4F;
 }
 .body{
     border: 1px solid #e3e4e6;
@@ -27,6 +28,9 @@
     margin: 10px;
     border-radius: 20px;
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    
 }
 .res-card{
     width: 286px;
@@ -41,11 +45,8 @@
    
 }
 .logo{
-    height: 50px;
-    padding: 10px;
-    border: 1px solid darkgrey;
-    border-radius: 5px;
-    margin: 10px;
+    height: 80px;
+    margin: 0px 10px;
 }
 .res-logo{
     width: inherit;
@@ -65,4 +66,73 @@
 .res-container{
     display: flex;
     flex-wrap: wrap;
+}
+
+.shimmer-card{
+    width: 286px;
+    height: 340px;
+    margin: 15px;
+    padding: 10px;
+}
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.shimmer-img{
+    width: 230px;
+    height: 150px;
+    border: 1px solid #dedddc;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 10px;
+    background-color: #dedddc;
+}
+.shimmer-title{
+    width: 180px;
+    /* height: 20px; */
+    border: 1px solid #dedddc;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 5px 0px;
+    background-color: #dedddc;
+}
+.shimmer-desc{
+    width: 100px;
+    /* height: 20px; */
+    border: 1px solid #dedddc;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 5px 0px;
+    background-color: #dedddc;
+}
+.search-box{
+    width: 40%;
+    padding: 18px;
+    border: 1px solid #f0f0f0;
+    border-color: transparent;
+    border-bottom-color: darkgrey;
+}
+.search-box:focus{
+    outline: none;
+}
+.button-cls{
+    width: -moz-fit-content;
+    width: fit-content;
+    /* height: auto; */
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    margin: 0 10px;
+    padding: 10px 14px;
+    color: #2F4F4F;
+
+}.button-login{
+    width: -moz-fit-content;
+    width: fit-content;
+    /* height: auto; */
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    margin: 0 10px;
+    padding: 10px 14px;
+    color: #2F4F4F;
+
 }
