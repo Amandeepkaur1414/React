@@ -136,3 +136,76 @@
     color: #2F4F4F;
 
 }
+.res-header{
+    display: flex;
+    justify-content: space-evenly;
+    color: #2f4f4f;
+}
+.color-font {
+    color: gray;
+}
+.hr{
+    border-top: dotted 1px;
+    margin: 10px 152px;
+}
+.menu-container{
+    margin: auto;
+    width: 50%;
+}
+.menu-heading{
+    font-weight: 900;
+    font-size: 22px;
+}
+.item-heading{
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.item-conatiner{
+    padding: 20px;
+    line-height: 22px;
+    letter-spacing: 1px;
+}
+.item-hr{
+    margin-top: 40px;
+}
+.description{
+    color :gray
+}
+.veg{
+    border: 1px solid green;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+}
+.non-veg{
+    border: 1px solid red;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+}
+.item-veg{
+    display: flex;
+    justify-content: space-evenly;
+    width: 54px;
+}
+.tiles{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+}
+.header-item{
+    padding: 5px 0px;
+}
+.item-img{
+    width: 30%;
+    float: right;
+    border-radius: 10px;
+}
+.item-container-detail{
+    display: inline-flex;
+    justify-content: space-between;
+}
+
