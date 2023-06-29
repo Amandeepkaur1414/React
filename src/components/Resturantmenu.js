@@ -1,27 +1,17 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import {URL,CDN_URL} from "../utils/constants";
+import {CDN_URL} from "../utils/constants";
+import useRestaurantData  from "../utils/useRestaurantData";
 import {BsFillStarFill,BiTime,BsCircleFill,BsFillPatchMinusFill,BsFillPatchPlusFill} from  "react-icons/bs";
 
 //faffwnpmkrkcesqcuxwc
 const RestaurantMenu = () =>{
     const [isActive,setisActive]= useState(false);
-    const [restInfo,setRestInfo]= useState(null);
     const {restid} = useParams();
     console.log(restid)
-    useEffect(()=>{
-        fetchMenu();
-       },
-       []);
-    const fetchMenu =async ()=>{
-            const data = await fetch(URL+
-            restid+"&submitAction=ENTER");
-             const jsonData = await data.json();
-            console.log(jsonData);
-            setRestInfo(jsonData.data);
-              
-    };
+  
+   const restInfo = useRestaurantData(restid);
     if(restInfo == null ){
     return <Shimmer />
 }

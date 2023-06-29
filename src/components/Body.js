@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 // import restList from "../utils/mockData"
 import { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body =() =>{
     // let restListLocal = restList;
@@ -21,7 +22,10 @@ const Body =() =>{
         setrestListJS(json?.data?.cards[2]?.data?.data?.cards);
         setfilteredListJS(json?.data?.cards[2]?.data?.data?.cards);
     };
-
+const onlineStatus = useOnlineStatus();
+if(onlineStatus === false){
+    return <h1>Looks like you're offline!! please check your internet connection</h1>
+}
     
     return restListJS.length == 0 ?<Shimmer/> :(
             <div className="body">
