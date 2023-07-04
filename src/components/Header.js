@@ -4,24 +4,24 @@ import {Link} from "react-router-dom"
 const Header =() =>{
     const  [btnName, setbtnName]= useState("Login");
     return (
-    <div className="header">
+    <div className="flex justify-between shadow-lg mb-2 py-2">
         <div className="logo-container">
-            <img className="logo" src = {logo}/>
+            <img className="w-40" src = {logo}/>
         </div>
-        <div className="nav-conatiner">
-            <ul>
-                <li>
+        <div className="flex items-center">
+            <ul className='flex p-4 m-4'>
+                <li className='px-4'>
                 <Link to="/">Home </Link> 
-                </li>
-                <li>
+                </li >
+                <li className='px-4'>
                 <Link to="/about">About us </Link>
                 </li>
-                <li>
+                <li className='px-4'>
                 <Link to="/contactus">Contact Us </Link>  
                
                 </li>
-                <li> <Link to="/grocery">Grocery App </Link>  </li>
-                <li>
+                <li className='px-4'> <Link to="/grocery">Grocery App </Link>  </li>
+                <li className='px-4'>
                     Cart
                 </li>
                

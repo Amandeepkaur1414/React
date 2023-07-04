@@ -29,14 +29,28 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
     "react-router-dom": "^6.12.1",
+    "react-scripts": "^5.0.1",
     "rebuild": "^0.1.2",
     "saas": "^1.0.0"
   },
   "devDependencies": {
+    "assert": "^2.0.0",
+    "autoprefixer": "^10.4.14",
+    "buffer": "^5.7.1",
+    "crypto-browserify": "^3.12.0",
     "jetifier": "^2.0.0",
     "node-sass": "^8.0.0",
+    "os-browserify": "^0.3.0",
     "parcel": "^2.8.3",
-    "process": "^0.11.10"
+    "path-browserify": "^1.0.1",
+    "postcss": "^8.4.24",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "tailwindcss": "^3.3.2",
+    "tty-browserify": "^0.0.1",
+    "url": "^0.11.1",
+    "util": "^0.12.5",
+    "vm-browserify": "^1.1.2"
   },
   "browserslist": [
     "last 10 versions"

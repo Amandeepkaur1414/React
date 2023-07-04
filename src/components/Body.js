@@ -29,13 +29,13 @@ if(onlineStatus === false){
     
     return restListJS.length == 0 ?<Shimmer/> :(
             <div className="body">
-                <div className="Search">
-                   <input type="text" className="search-box" value={searchText}
+                <div className="flex p-5">
+                   <input type="text" className=" p-2 m-2 border border-gray-400 rounded-lg" value={searchText}
                    onChange={(e)=>{
                     setsearchText(e.target.value);
                    }}/> 
-                <div>
-                        <button  className="button-cls" onClick={()=>{
+                        <div className="flex items-center">
+                        <button  className="p-2 m-2 bg-blue-300 rounded-lg" onClick={()=>{
                             const filterRes = restListJS.filter((ele) => {
                                 console.log(ele.data.name.toLowerCase().includes(searchText));
                                 return ele.data.name.toLowerCase().includes(searchText.toLowerCase());
@@ -45,19 +45,19 @@ if(onlineStatus === false){
                             }}>Search
                         </button>
 
-                        <button  className="button-cls" onClick= {()=>{
+                        <button  className="p-2  m-2 bg-green-400 rounded-lg" onClick= {()=>{
                         const filterdData1= restListJS.filter(ele =>{ return ele.data.avgRating >4});
                         setfilteredListJS(filterdData1);
                             }}>Top Rated Restaurants</button>
                 
-                        <button  className="button-cls" onClick= {()=>{
+                        <button  className="p-2  m-2 bg-gray-300 rounded-lg" onClick= {()=>{
                         setfilteredListJS(restListJS);
                         setsearchText("");
                         }}>Reset</button>
                     </div>
                 </div>
                
-                    <div className="res-container">
+                    <div className="flex flex-wrap">
                     { filteredListJS.map((restData) =>(
                            <Link key ={restData.data.id} to ={"/resturant/"+restData.data.id}> <ResturantCard key ={restData.data.id} restObj={restData}/> </Link>
                         ))
