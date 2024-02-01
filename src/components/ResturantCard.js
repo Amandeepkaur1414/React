@@ -2,7 +2,7 @@ import {CDN_URL} from "../utils/constants"
 import {BsFillStarFill} from  "react-icons/bs";
 const ResturantCard =(prop) =>{
     const {restObj} = prop;
-    const {cloudinaryImageId, name, cuisines,avgRating,costForTwoString,deliveryTime}= restObj.data;
+    const {cloudinaryImageId, name, cuisines,avgRating,costForTwoString,deliveryTime}= restObj.info;
     return(
         <div className="m-4 p-4 w-[250px]  rounded-lg hover:border border-solid">
             <img className="rounded-t-lg" src={CDN_URL
@@ -22,4 +22,20 @@ const ResturantCard =(prop) =>{
             </div>
     )
 }
+
+export const withPromotedLabel = (ResturantCard)=>{
+    return (props) =>{
+        return(
+            <div>
+                <label className="absolute p-1 m-1 bg-green-500 text-white rounded ">
+                    Promoted
+                </label>
+                <ResturantCard {...props} />
+            </div>
+        )
+
+    }
+
+}
 export default ResturantCard;
+// export default withPromotedLabel;

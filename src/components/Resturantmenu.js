@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 import {CDN_URL} from "../utils/constants";
 import useRestaurantData  from "../utils/useRestaurantData";
 import {BsFillStarFill,BsCircleFill,BsFillArrowUpCircleFill} from  "react-icons/bs";
+import RestaurantCategory from "./RestaurantCategory";
 
 //faffwnpmkrkcesqcuxwc
 const RestaurantMenu = () =>{
-    const [isActive,setisActive]= useState(true);
+    const [showIndex,setshowIndex]= useState(0);
     const {restid} = useParams();
     console.log(restid)
   
@@ -16,17 +17,17 @@ const RestaurantMenu = () =>{
     return <Shimmer />
 }
 
-      const  setIsActive = () =>{
+    //   const  setIsActive = () =>{
        
         
-        setisActive(!isActive);
-        }
+    //     setisActive(!isActive);
+    //     }
     
     const {name,cuisines ,costForTwoMessage,avgRatingString,areaName,totalRatingsString} = restInfo == null ? '':
    restInfo?.cards[0]?.card?.card?.info;
     const itemCards =restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 // const itemCards =[];  
-console.log(itemCards)
+// console.log(itemCards)
  
 return (
     <div className="mr-50 ml-50">
@@ -43,22 +44,26 @@ return (
         </div>
         <hr className="leading-3"></hr>
 
-        <div className=" justify-center ml-80 mr-80 ">
+       
+        {<div className=" justify-center ml-80 mr-80 ">
             
                 {itemCards.map((item,index) =>{
                     if(item?.card?.card?.itemCards != undefined){
-                        console.log(item?.card?.card?.title);
-                        return <div className=" "  key = {index}> 
-                        <div className='flex w-50 justify-between p-2 mt-2 rounded bg-gray-200' onClick={() =>setIsActive()}>
-                            <div className='flex'>
-                                <div className='text-gray-700 font-bold'>{item?.card?.card?.title}</div>
+                        // console.log(item?.card?.card?.title);
+                        return  <RestaurantCategory key ={item?.card?.card?.id} data ={item?.card?.card} 
+                        showIndex ={index == showIndex ? true:false}
+                        setshowIndex={()=>setshowIndex(index)}/>
+
+                        {/* <div className='flex w-50 justify-between p-2 mt-2 rounded bg-gray-200' onClick={() =>setIsActive()}> */}
+                            {/* <div className='flex'>
+                                <div className='text-gray-700 font-bold'>{item?.card?.card?.title}{}</div>
                             </div>
                             <div className="flex items-center justify-center">
                                 <BsFillArrowUpCircleFill className='w-8 h-8 text-gray-700' />
-                            </div>
+                            </div> */}
                                     
-                        </div>
-                        {isActive && <div>
+                        {/* </div> */}
+                        {/* {isActive && <div>
                             {  
                     
                             item?.card?.card?.itemCards.map((ele,eleindex) =>{
@@ -96,12 +101,16 @@ return (
                                 </div>
 
                             })}
-                        </div>}
-                        </div>
+                        </div>} */}
+                        // </div>
                     }
                 })}
-        </div>
-    </div>
+        </div>}
+
+</div>
+
+        
+  
     
 )
 }

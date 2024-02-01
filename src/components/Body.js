@@ -1,11 +1,12 @@
-import ResturantCard from "./ResturantCard";
+import ResturantCard,{  withPromotedLabel} from "./ResturantCard";
 import Shimmer from "./Shimmer";
 // import restList from "../utils/mockData"
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/UserContext";
 const Body =() =>{
+    const PromotedComponent = withPromotedLabel(ResturantCard);
     // let restListLocal = restList;
     const [restListJS,setrestListJS]=useState([]);
     const [filteredListJS,setfilteredListJS]=useState([]);
@@ -19,10 +20,11 @@ const Body =() =>{
         const json =await data.json();
         console.log("json",json);
         // optional chaining
-        setrestListJS(json?.data?.cards[2]?.data?.data?.cards);
-        setfilteredListJS(json?.data?.cards[2]?.data?.data?.cards);
+        setrestListJS(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setfilteredListJS(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
 const onlineStatus = useOnlineStatus();
+const { loggedInUser, setUserName} = useContext(UserContext);
 if(onlineStatus === false){
     return <h1>Looks like you're offline!! please check your internet connection</h1>
 }
@@ -37,8 +39,8 @@ if(onlineStatus === false){
                         <div className="flex items-center">
                         <button  className="p-2 m-2 bg-blue-300 rounded-lg" onClick={()=>{
                             const filterRes = restListJS.filter((ele) => {
-                                console.log(ele.data.name.toLowerCase().includes(searchText));
-                                return ele.data.name.toLowerCase().includes(searchText.toLowerCase());
+                                console.log(ele.info.name.toLowerCase().includes(searchText));
+                                return ele.info.name.toLowerCase().includes(searchText.toLowerCase());
                             }
                             );
                             setfilteredListJS(filterRes);
@@ -46,7 +48,7 @@ if(onlineStatus === false){
                         </button>
 
                         <button  className="p-2  m-2 bg-green-400 rounded-lg" onClick= {()=>{
-                        const filterdData1= restListJS.filter(ele =>{ return ele.data.avgRating >4});
+                        const filterdData1= restListJS.filter(ele =>{ return ele.info.avgRating >4});
                         setfilteredListJS(filterdData1);
                             }}>Top Rated Restaurants</button>
                 
@@ -54,12 +56,20 @@ if(onlineStatus === false){
                         setfilteredListJS(restListJS);
                         setsearchText("");
                         }}>Reset</button>
+                         <div>
+                        <label>UserName:</label>
+                        <input className="border border-black m-2 p-2" value ={loggedInUser} onChange={(e)=>{setUserName(e.target.value)}}/>
                     </div>
+                    </div>
+                   
                 </div>
                
                     <div className="flex flex-wrap">
                     { filteredListJS.map((restData) =>(
-                           <Link key ={restData.data.id} to ={"/resturant/"+restData.data.id}> <ResturantCard key ={restData.data.id} restObj={restData}/> </Link>
+                           <Link key ={restData.info.id} to ={"/resturant/"+restData.info.id}> 
+                           {restData.info.avgRating >="4.3" ?<PromotedComponent key ={restData.info.id} restObj={restData}/> :<ResturantCard key ={restData.info.id} restObj={restData}/>}
+                           {/* <ResturantCard key ={restData.info.id} restObj={restData}/> */}
+                            </Link>
                         ))
                         }
                     </div>

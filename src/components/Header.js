@@ -1,8 +1,11 @@
-import {useState} from 'react';
+import {useState,useContext} from 'react';
 import logo from '../../assets/food-logo.jpg'; 
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import UserContext from "../utils/UserContext";
+
 const Header =() =>{
     const  [btnName, setbtnName]= useState("Login");
+    const {loggedInUser} = useContext(UserContext);
     return (
     <div className="flex justify-between shadow-lg mb-2 py-2">
         <div className="logo-container">
@@ -23,6 +26,9 @@ const Header =() =>{
                 <li className='px-4'> <Link to="/grocery">Grocery App </Link>  </li>
                 <li className='px-4'>
                     Cart
+                </li>
+                <li className='px-4'>
+                    {loggedInUser}
                 </li>
                
                     <button className="button-login" onClick={
