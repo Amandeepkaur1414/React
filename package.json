@@ -23,11 +23,13 @@
   },
   "homepage": "https://github.com/Amandeepkaur1414/React#readme",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.1.0",
     "configure": "0.0.1",
     "node-gyp": "^9.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
+    "react-redux": "^9.1.0",
     "react-router-dom": "^6.12.1",
     "react-scripts": "^5.0.1",
     "rebuild": "^0.1.2",

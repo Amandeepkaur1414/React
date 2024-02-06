@@ -1,6 +1,15 @@
 import {BsFillStarFill,BsCircleFill} from  "react-icons/bs";
 import {CDN_URL} from "../utils/constants.js";
+import { useDispatch } from "react-redux";
+import { addItems } from "../utils/cartSlice.js";
 const MenuItemList=({items}) =>{
+    const dispatch = useDispatch();
+    const handleAddItem =(item)=>{
+        console.log("item",item)
+    // dispatch an action on click of add
+    dispatch(addItems(item));
+
+    }
 return(
     <div>
         {items.map((ele)=>(
@@ -31,7 +40,7 @@ return(
             </div>
             <div className="w-3/12 p-4" >
                 <div className="absolute">
-                    <button className="bg-slate-50 mx-14 p-2 m-auto shadow-lg rounded-lg mt-20">Add +</button>
+                    <button className="bg-slate-50 mx-14 p-2 m-auto shadow-lg rounded-lg mt-20" onClick={()=>{handleAddItem(ele)}}>Add +</button>
                 </div>
                 { ele.card.info.imageId ?
                 <img  className="rounded-lg" src={CDN_URL + ele.card.info.imageId} /> :""}
