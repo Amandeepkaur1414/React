@@ -10,7 +10,7 @@ const useRestaurantData = (restid) =>{
         const data = await fetch(URL+
         restid+"&submitAction=ENTER");
          const jsonData = await data.json();
-        console.log(jsonData);
+        console.log(jsonData.data);
         setRestInfo(jsonData.data);
           
 };

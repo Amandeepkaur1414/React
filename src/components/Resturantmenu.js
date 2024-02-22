@@ -6,7 +6,7 @@ import useRestaurantData  from "../utils/useRestaurantData";
 import {BsFillStarFill,BsCircleFill,BsFillArrowUpCircleFill} from  "react-icons/bs";
 import RestaurantCategory from "./RestaurantCategory";
 
-//faffwnpmkrkcesqcuxwc
+
 const RestaurantMenu = () =>{
     const [showIndex,setshowIndex]= useState(0);
     const {restid} = useParams();
@@ -16,18 +16,11 @@ const RestaurantMenu = () =>{
     if(restInfo == null ){
     return <Shimmer />
 }
-
-    //   const  setIsActive = () =>{
-       
-        
-    //     setisActive(!isActive);
-    //     }
     
     const {name,cuisines ,costForTwoMessage,avgRatingString,areaName,totalRatingsString} = restInfo == null ? '':
-   restInfo?.cards[0]?.card?.card?.info;
-    const itemCards =restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-// const itemCards =[];  
-// console.log(itemCards)
+   restInfo?.cards[2]?.card?.card?.info;
+    const itemCards =restInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+
  
 return (
     <div className="mr-50 ml-50">
@@ -49,60 +42,10 @@ return (
             
                 {itemCards.map((item,index) =>{
                     if(item?.card?.card?.itemCards != undefined){
-                        // console.log(item?.card?.card?.title);
                         return  <RestaurantCategory key ={item?.card?.card?.id} data ={item?.card?.card} 
                         showIndex ={index == showIndex ? true:false}
                         setshowIndex={()=>setshowIndex(index)}/>
 
-                        {/* <div className='flex w-50 justify-between p-2 mt-2 rounded bg-gray-200' onClick={() =>setIsActive()}> */}
-                            {/* <div className='flex'>
-                                <div className='text-gray-700 font-bold'>{item?.card?.card?.title}{}</div>
-                            </div>
-                            <div className="flex items-center justify-center">
-                                <BsFillArrowUpCircleFill className='w-8 h-8 text-gray-700' />
-                            </div> */}
-                                    
-                        {/* </div> */}
-                        {/* {isActive && <div>
-                            {  
-                    
-                            item?.card?.card?.itemCards.map((ele,eleindex) =>{
-                                return   <div  key = {eleindex} className=" rounded-xl p-8 m-8">
-                                    <div className="flex flex-wrap justify-between" >
-                                
-                                        <div className="w-[400px]">
-                                            <div className="">
-                                                {
-                                                    ele.card.info.isVeg == 1 ?<div className="border border-solid border-green-500 w-7 p-1 justify-center"><BsCircleFill fill="green"/>
-                                                    </div>: <div  className="border border-solid border-red-500 w-7 p-1"><BsCircleFill fill="red"/>
-                                                    </div>
-                                                }
-                                                {
-                                                    ele.card.info.isBestseller !=undefined ? <BsFillStarFill  fill ="#ee9c00"/> :'' 
-                                                }
-                                            </div>
-                                            <div className="font-medium text-lg">
-                                                {ele.card.info.name}
-                                            </div>
-                                            <div>
-                                                ₹{ele.card.info.defaultPrice ? ele.card.info.defaultPrice/100 : ele.card.info.price/100}
-                                            </div>
-                                            <div className="text-ellipsis ">
-                                                {ele.card.info.description}
-                                            </div>
-                                        </div>
-                                        <div className="w-40 float-left" >
-                                            { ele.card.info.imageId ?
-                                            <img  className="rounded-lg" src={CDN_URL + ele.card.info.imageId} /> :""}
-                                        </div>
-                                        
-                                    </div>
-                                    <hr className="mt-10 bg-slate-300" />
-                                </div>
-
-                            })}
-                        </div>} */}
-                        // </div>
                     }
                 })}
         </div>}

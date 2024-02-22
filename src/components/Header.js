@@ -1,5 +1,5 @@
 import {useState,useContext} from 'react';
-import logo from '../../assets/food-logo.jpg'; 
+import logo from '../../assets/food-logo.png'; 
 import {Link} from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import { useSelector } from 'react-redux';
@@ -14,7 +14,7 @@ const Header =() =>{
     return (
     <div className="flex justify-between shadow-lg mb-2 py-2">
         <div className="logo-container">
-            <img className="w-40" src = {logo}/>
+            <img className="w-24 ml-10" src = {logo}/>
         </div>
         <div className="flex items-center">
             <ul className='flex p-4 m-4'>

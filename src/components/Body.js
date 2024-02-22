@@ -5,11 +5,16 @@ import { useEffect, useState,useContext } from "react";
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import FoodCategory from "./FoodCategory";
+import TopRestaurant from "./TopRestaurant.js";
+
 const Body =() =>{
     const PromotedComponent = withPromotedLabel(ResturantCard);
     // let restListLocal = restList;
     const [restListJS,setrestListJS]=useState([]);
     const [filteredListJS,setfilteredListJS]=useState([]);
+    const [foodCuisine,setfoodCuisine]=useState([]);
+    const [topRestaurant,setTopRestaurant]=useState([]);
     const [searchText,setsearchText]=useState("");
     useEffect(()=>{
         fetchData();
@@ -20,6 +25,9 @@ const Body =() =>{
         const json =await data.json();
         console.log("json",json);
         // optional chaining
+        setfoodCuisine(json?.data?.cards[0]?.card.card);
+        console.log("foodCuisine",foodCuisine);
+        setTopRestaurant(json?.data?.cards[1]?.card.card);
         setrestListJS(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setfilteredListJS(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
@@ -30,8 +38,10 @@ if(onlineStatus === false){
 }
     
     return restListJS.length == 0 ?<Shimmer/> :(
-            <div className="body">
-                <div className="flex p-5">
+            <div className="body w-10/12 mx-auto my-4 ">
+                <FoodCategory key ={foodCuisine.id} restObj={foodCuisine}/>
+                <TopRestaurant  key = {topRestaurant.id} restObj ={topRestaurant}/>
+                <div className="flex ">
                    <input type="text" className=" p-2 m-2 border border-gray-400 rounded-lg" value={searchText}
                    onChange={(e)=>{
                     setsearchText(e.target.value);
@@ -64,7 +74,7 @@ if(onlineStatus === false){
                    
                 </div>
                
-                    <div className="flex flex-wrap">
+                    <div className="flex flex-wrap space-x-2">
                     { filteredListJS.map((restData) =>(
                            <Link key ={restData.info.id} to ={"/resturant/"+restData.info.id}> 
                            {restData.info.avgRating >="4.3" ?<PromotedComponent key ={restData.info.id} restObj={restData}/> :<ResturantCard key ={restData.info.id} restObj={restData}/>}

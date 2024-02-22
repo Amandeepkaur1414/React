@@ -1,10 +1,11 @@
 import {CDN_URL} from "../utils/constants"
 import {BsFillStarFill} from  "react-icons/bs";
 const ResturantCard =(prop) =>{
+    
     const {restObj} = prop;
-    const {cloudinaryImageId, name, cuisines,avgRating,costForTwoString,deliveryTime}= restObj.info;
+    const {cloudinaryImageId, name, cuisines,avgRating,costForTwoString}= restObj.info;
     return(
-        <div className="m-4 p-4 w-[250px]  rounded-lg hover:border border-solid">
+        <div className="m-4 w-[290px]  rounded-lg hover:border border-solid">
             <img className="rounded-t-lg" src={CDN_URL
             + cloudinaryImageId} />
 
@@ -16,7 +17,7 @@ const ResturantCard =(prop) =>{
                 {/* <ul> */}
                     <div className='p-1 flex items-center rounded-lg text-orange-50 bg-green-500' ><BsFillStarFill className="mr-2"/> {avgRating} </div>
                     <div className="p-1"> {costForTwoString}</div>
-                    <div className="p-1">  {deliveryTime} mins</div>
+                    <div className="p-1">  {restObj.info.sla.slaString} </div>
                 {/* </ul> */}
             </div>
             </div>
