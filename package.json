@@ -5,8 +5,8 @@
   "scripts": {
     "test": "jest",
     "setup": "node --stack-size=20000 index.js",
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "start": "parcel ./public/index.html",
+    "build": "parcel build ./public/index.html"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
     "configure": "0.0.1",
+    "firebase": "^10.8.0",
     "node-gyp": "^9.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
